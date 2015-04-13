@@ -1,8 +1,9 @@
 package arduinomultiplexor;
 
-import Arduino.Arduino;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import panamahitek.PanamaHitek_Arduino;
 
 /**
  *
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
 public class Window extends javax.swing.JFrame {
 
     //Se cre una instancia de la librería Arduino para Java
-    Arduino Arduino = new Arduino();
+    PanamaHitek_Arduino Arduino = new PanamaHitek_Arduino();
 
     public Window() {
         initComponents();
@@ -20,7 +21,7 @@ public class Window extends javax.swing.JFrame {
          En mi caso mi Arduino estaba en el puerto COM14, pero puede variar.
          */
         try {
-            Arduino.ArduinoTX("COM14", 2000, 9600);
+            Arduino.arduinoTX("COM14", 9600);
         } catch (Exception ex) {
             Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,7 +90,7 @@ public class Window extends javax.swing.JFrame {
 
         //Se envía el tiempo seguido de un punto para separar los mensajes
         try {
-            Arduino.SendData(time + ".");
+            Arduino.sendData(time + ".");
         } catch (Exception ex) {
             Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
         }
